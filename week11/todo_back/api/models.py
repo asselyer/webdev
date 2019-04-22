@@ -4,6 +4,12 @@ from django.utils import timezone
 
 class TaskList(models.Model):
     name = models.CharField(max_length=200)
+    
+    def to_json(self):
+        return {
+            'id': self.id,
+            'name': self.name
+        }
 
 
 class Task(models.Model):
@@ -15,3 +21,11 @@ class Task(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def to_json(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'due_on': self.due_on,
+            'status': self.status
+        }

@@ -25,7 +25,7 @@ SECRET_KEY = 'vq2(7sx79eki10(!0!ow1l*)r29f*t(y@#s^!evcnw@5qa2o*c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'asselyer.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'asselyer.pythonanywhere.com', 'localhost']
 
 
 # Application definition
