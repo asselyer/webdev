@@ -27,5 +27,6 @@ class Task(models.Model):
             'id': self.id,
             'name': self.name,
             'due_on': self.due_on,
-            'status': self.status
+            'status': self.status,
+            'task_list': self.task_list
         }

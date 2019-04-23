@@ -9,23 +9,20 @@ import { Task } from 'src/app/models/task';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent implements OnInit, OnDestroy  {
+export class MainComponent implements OnInit  {
 
-  
-  public subTitle = '';
-  public array2: any[] = [];
+  public output = '';
+  public stringArray: string[] = [];
 
   public tasklists: TaskList[] = [];
   public loading = false;
 
-  public interval;
-  public i = 0;
-
   public tasks: Task[] = [];
-  
 
+  public name: any = '';
 
-  constructor(private provider: ProviderService) { }
+  constructor(private provider: ProviderService) {
+  }
 
   ngOnInit() {
 
@@ -35,17 +32,37 @@ export class MainComponent implements OnInit, OnDestroy  {
         this.loading = true;
       }, 2000);
     });
-
   }
 
-  getTasks(tasklist: TaskList) {
-    this.provider.getTaskListTasks(tasklist.id).then(res => {
+  getTasks(task_list: TaskList) {
+    this.provider.getTasks(task_list).then(res => {
       this.tasks = res;
     });
   }
 
-  ngOnDestroy() {
-    clearInterval(this.interval);
+
+  updateTaskList(l: TaskList) {
+    this.provider.updateTaskList(l).then(res => {
+      console.log(l.name + ' updated');
+    });
+  }
+
+  deleteTaskList(l: TaskList) {
+    this.provider.deleteTaskList(l.id).then(res => {
+      console.log(l.name + ' deleted');
+      this.provider.getTaskLists().then(r => {
+        this.tasklists = r;
+      });
+    });
+  }
+
+  createTaskList() {
+    if (this.name !== '') {
+      this.provider.createTaskList(this.name).then(res => {
+        this.name = '';
+        this.tasklists.push(res);
+      });
+    }
   }
 
 }

@@ -59,5 +59,4 @@ export class MainService {
     return params;
   }
 
-
 }
