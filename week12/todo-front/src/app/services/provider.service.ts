@@ -23,8 +23,8 @@ export class ProviderService extends MainService{
   getTasks(task_list: TaskList): Promise<Task[]> {
     return this.get(`http://localhost:8000/api/task_list/${task_list.id}/`, {});
   }
-  getTask(task: Task): Promise<Task>{
-    return this.get(`http://localhost:8000/api/tasks/${task.id}/`, {});
+  getTask(taski: Task): Promise<Task>{
+    return this.get(`http://localhost:8000/api/tasks/${taski.id}/`, {});
   }
 
   createTaskList(name: any): Promise<TaskList> {
@@ -48,5 +48,10 @@ export class ProviderService extends MainService{
   deleteTaskList(id: number): Promise<any> {
     return this.delet(`http://localhost:8000/api/task_list/${id}/`, {});
   }
+
+  deleteTask(id: number): Promise<any> {
+    return this.delet(`http://localhost:8000/api/tasks/${id}/`, {});
+  }
+
 
 }

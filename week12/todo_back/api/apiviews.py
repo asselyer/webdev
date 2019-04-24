@@ -10,7 +10,7 @@ class TaskList(generics.ListCreateAPIView):
     queryset = TaskList.objects.all()
     serializer_class = TaskListSerializer
 
-class TaskListDetail(generics.ListCreateAPIView):
+class TaskListDetail(generics.RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         queryset = Task.objects.filter(task_list_id=self.kwargs["task_list_id"])
         return queryset

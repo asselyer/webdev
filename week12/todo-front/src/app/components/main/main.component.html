@@ -33,8 +33,8 @@ Tasks
   <div>
     <div *ngFor="let t of tasks">
         {{t.id}}<span (click)="getTask(t)"><input type="text" [(ngModel)]="t.name" /></span><input type="text" [(ngModel)]="t.status" />
-      <button style="color: red" (click)="deleteTaskList(t)"> Удалить</button>
-      <button style="color: green" (click)="updateTaskList(t)"> Изменить</button>
+      <button style="color: red" (click)="deleteTask(t)"> Удалить</button>
+      <button style="color: green" (click)="updateTask(t)"> Изменить</button>
     </div>
   </div>
 </ng-container>
