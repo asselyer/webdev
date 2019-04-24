@@ -15,7 +15,6 @@ class TaskListDetail(generics.ListCreateAPIView):
         queryset = Task.objects.filter(task_list_id=self.kwargs["task_list_id"])
         return queryset
     serializer_class = TaskSerializer
-    
 
 class TasksList(generics.ListCreateAPIView):
     def get_queryset(self):
