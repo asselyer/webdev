@@ -2,19 +2,21 @@ from rest_framework import serializers
 from .models import TaskList, Task
 
 
-class TaskSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Task
-        fields = '__all__'
-
 class TaskListSerializer(serializers.ModelSerializer):
-    tasks = TaskSerializer(many=True, read_only=True, required=False)
+    id = serializers.IntegerField(read_only=True)
+    name = serializers.CharField()
     class Meta:
         model = TaskList
         fields = '__all__'
+ 
+class TaskSerializer(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
+    name = serializers.CharField(required=True)
+    status = serializers.CharField()
+    due_on = serializers.DateTimeField()
+    created_at = serializers.DateTimeField()
+    task_list = TaskListSerializer()
 
-class TaskListSerializer2(serializers.ModelSerializer):
-    pass
 
 class TasksSerializer(serializers.ModelSerializer):
     class Meta:

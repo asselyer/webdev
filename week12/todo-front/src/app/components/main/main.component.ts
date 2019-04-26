@@ -20,6 +20,8 @@ export class MainComponent implements OnInit  {
   public tasks: Task[] = [];
 
   public name: any = '';
+  public status: any = '';
+  public name1: any = '';
 
   constructor(private provider: ProviderService) {
   }
@@ -32,13 +34,21 @@ export class MainComponent implements OnInit  {
         this.loading = true;
       }, 2000);
     });
+    
   }
+  
 
   getTasks(task_list: TaskList) {
     this.provider.getTasks(task_list).then(res => {
       this.tasks = res;
     });
   }
+  getTask(tasks: Task) {
+    this.provider.getTasks(tasks).then(res => {
+      this.tasks = res;
+    });
+  }
+
 
 
   updateTaskList(l: TaskList) {
@@ -56,6 +66,14 @@ export class MainComponent implements OnInit  {
     });
   }
 
+  deleteTask(t: Task) {
+    this.provider.deleteTask(t.id).then(res => {
+      console.log(t.name + ' deleted');
+      this.provider.getTaskLists().then(r => {
+        this.tasklists = r;
+      });
+    });
+  }
   createTaskList() {
     if (this.name !== '') {
       this.provider.createTaskList(this.name).then(res => {
@@ -66,5 +84,4 @@ export class MainComponent implements OnInit  {
   }
 
   
-
 }

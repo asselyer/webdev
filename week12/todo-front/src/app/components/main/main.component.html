@@ -16,8 +16,10 @@ Task List
       <span (click)="getTasks(l)">
         <input type="text" [(ngModel)]="l.name" />
       </span>
+      
       <button style="color: red" (click)="deleteTaskList(l)"> Удалить</button>
       <button style="color: green" (click)="updateTaskList(l)"> Изменить</button>
+    
     </div>
   </div>
 </ng-container>
@@ -32,17 +34,12 @@ Tasks
 <ng-container *ngIf="loading">
   <div>
     <div *ngFor="let t of tasks">
-        {{t.id}}<span (click)="getTask(t)"><input type="text" [(ngModel)]="t.name" /></span><input type="text" [(ngModel)]="t.status" />
+        {{t.id}}<span (click)="getTask(t)"><input type="text" [(ngModel)]="t.name" /><input type="text" [(ngModel)]="t.status" /></span>
       <button style="color: red" (click)="deleteTask(t)"> Удалить</button>
       <button style="color: green" (click)="updateTask(t)"> Изменить</button>
+    
     </div>
+
   </div>
+
 </ng-container>
-Create Task For This Task List:
-<div>
-  <input type="text" [(ngModel)]="name" />
-  <button (click)="createTask()">Create</button>
-</div>
-
-
-

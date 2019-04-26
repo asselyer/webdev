@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from .models import Task, TaskList
-from .serializers import TaskList, TaskListSerializer, TaskListSerializer2, TaskSerializer
+from .serializers import TaskList, TaskListSerializer, TaskSerializer
 from django.views.decorators.csrf import csrf_exempt
 import json
 from django.http import Http404
