@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<h2>{{ name }}</h2>
+<ul>
+    {% for n in nums %}
+        <li>
+            {{ n }}
+        </li>
+    {% endfor %}
+</ul>
+
+{% if is_logged_in %}
+    <button>Logout</button>
+{% else %}
+    <button>Login</button>
+{% endif %}
+
+<h4>ID: {{ task.id }}, Name: {{ task.name }}</h4>
+
+{#    comment #}
+
+<h1>Task List</h1>
+<ul>
+    {% for task in tasks %}
+        <li>
+            {{ task.id }} - {{ task.name }}
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

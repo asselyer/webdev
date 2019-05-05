@@ -1,0 +1,52 @@
+
+<ng-container *ngIf="!isLogged">
+  <div>
+    <div>
+      <input type="text" placeholder="Login" [(ngModel)]="login"/>
+    </div>
+    <div>
+      <input type="password" placeholder="Password" [(ngModel)]="password"/>
+    </div>
+    <div>
+      <button (click)="auth()">Log in</button>
+    </div>
+  </div>
+</ng-container>
+
+
+<ng-container *ngIf="isLogged">
+  CREATE CATEGORY:
+  <div>
+    <input type="text" [(ngModel)]="name" />
+    <button (click)="createTaskList()">Create</button>
+  </div>
+
+  CATEGORIES
+  <ng-container *ngIf="!loading">
+    Loading...
+  </ng-container>
+
+  <ng-container *ngIf="loading">
+    <div>
+      <div *ngFor="let l of tasklists">
+      <span (click)="getTasks(l)">
+        <input type="text" [(ngModel)]="l.name" />
+      </span>
+        <span style="color: red" (click)="deleteTaskList(l)"> Удалить</span>
+        <span style="color: green" (click)="updateTaskList(l)"> Изменить</span>
+      </div>
+    </div>
+  </ng-container>
+
+  <br/>
+  PRODUCTS:
+  <div>
+    <div *ngFor="let t of tasks">{{t.id}} - {{t.name}} - {{t.due_on}} - {{t.status}}</div>
+  </div>
+
+  <div>
+    <button (click)="logout()">Log out</button>
+  </div>
+
+</ng-container>
+<!-- <h1>{{message}}</h1> -->
