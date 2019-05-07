@@ -36,7 +36,6 @@ def task_list(request):
         body = json.loads(request.body)
         serializer = TaskListSerializer2(data=body)
         if serializer.is_valid():
-            # create function from serializer
             serializer.save()
             return JsonResponse(serializer.data)
         return JsonResponse(serializer.errors)

@@ -15,13 +15,13 @@
 
 
 <ng-container *ngIf="isLogged">
-  CREATE CATEGORY:
+  Create Task List:
   <div>
     <input type="text" [(ngModel)]="name" />
     <button (click)="createTaskList()">Create</button>
   </div>
 
-  CATEGORIES
+  Task List
   <ng-container *ngIf="!loading">
     Loading...
   </ng-container>
@@ -39,7 +39,7 @@
   </ng-container>
 
   <br/>
-  PRODUCTS:
+  Tasks:
   <div>
     <div *ngFor="let t of tasks">{{t.id}} - {{t.name}} - {{t.due_on}} - {{t.status}}</div>
   </div>
